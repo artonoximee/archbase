@@ -8,7 +8,7 @@ function SignIn() {
 
   async function login() {
     try {
-      const user = await signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(auth, email, password);
     } catch(err) {
       console.log(err.message)
     }

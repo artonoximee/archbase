@@ -9,7 +9,7 @@ function SignUp() {
 
   async function register() {
     try {
-      const user = await createUserWithEmailAndPassword(auth, email, password);
+      await createUserWithEmailAndPassword(auth, email, password);
     } catch(err) {
       console.log(err.message)
     }
