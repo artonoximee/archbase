@@ -22,9 +22,11 @@ function SignUp() {
 
           <input 
             type="text"
-            className={`form-control form-control-lg mt-3 bg-dark border-secondary text-light`}
+            className={`form-control form-control-lg mt-3 bg-dark border-secondary text-light ${errors.name && "is-invalid border-danger"}`}
             placeholder="Nom et prénom"
+            {...register("name", { required: true })}
           />
+          {errors.email && <p className="text-danger mt-2">Merci de renseigner votre nom pour vous inscrire</p>}
 
           <input 
             type="email"
@@ -40,7 +42,7 @@ function SignUp() {
             placeholder="Mot de passe"
             {...register("password", { required: true, minLength: 6 })}
           />
-          {errors.password && <p className="text-danger text-center mt-2">Merci de renseigner un mot de passe de 6 caractères minimum pour vous inscrire</p>}
+          {errors.password && <p className="text-danger mt-2">Merci de renseigner un mot de passe de 6 caractères minimum pour vous inscrire</p>}
 
           <div className="d-grid gap-2">
             <button className={`btn btn-lg mt-5 btn-outline-primary`} onClick={handleSubmit(signUp)} type="submit">Inscription</button>
