@@ -1,15 +1,7 @@
-import React, {useState} from "react";
+import React from "react";
 import {Link} from "react-router-dom";
-import {auth} from '../firebase-config';
-import {onAuthStateChanged} from "firebase/auth";
 
 function Navbar() {
-  const [user, setUser] = useState(null);
-
-  onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-  })
-
   return (
     <nav className="navbar navbar-dark navbar-expand-lg bg-dark">
       <div className="container-fluid">
@@ -35,9 +27,6 @@ function Navbar() {
             </li>
             <li className="nav-item">
               <Link to="login" className="nav-link">Connexion</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="/" className="nav-link">{user.email}</Link>
             </li>
           </ul>
         </div>
