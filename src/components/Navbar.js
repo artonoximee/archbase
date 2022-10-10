@@ -1,9 +1,15 @@
-import React from "react";
-import {signOut} from "firebase/auth";
-import {auth} from '../firebase-config'
+import React, {useState} from "react";
+import {onAuthStateChanged, signOut} from "firebase/auth";
+import {auth} from "../firebase-config";
 import {Link} from "react-router-dom";
 
 function Navbar() {
+  const [user, setUser] = useState(null);
+
+  onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser)
+  })
+
   async function logOut() {
     await signOut(auth);
   }
@@ -28,15 +34,23 @@ function Navbar() {
             </li>
           </ul>
           <ul className="navbar-nav mb-2 mb-lg-0">
-            <li className="nav-item">
-              <Link to="register" className="nav-link">Inscription</Link>
-            </li>
-            <li className="nav-item">
-              <Link to="login" className="nav-link">Connexion</Link>
-            </li>
-            <li className="nav-item">
-              <Link onClick={logOut} className="nav-link">Déconnexion</Link>
-            </li>
+            {
+              !user &&
+              <>
+                <li className="nav-item">
+                  <Link to="register" className="nav-link">Inscription</Link>
+                </li>
+                <li className="nav-item">
+                  <Link to="login" className="nav-link">Connexion</Link>
+                </li>
+              </>
+            }
+            { 
+              user && 
+              <li className="nav-item">
+                <Link onClick={logOut} className="nav-link">Déconnexion</Link>
+              </li>
+            }
           </ul>
         </div>
       </div>
