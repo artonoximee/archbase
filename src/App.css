@@ -1,3 +1,11 @@
 #page {
   min-height: 100vh;
 }
+
+.top-margin {
+  margin-top: 12vh !important;
+}
+
+.bottom-margin {
+  margin-bottom: 12vh !important;
+}
