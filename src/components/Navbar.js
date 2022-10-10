@@ -1,5 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import {auth} from '../firebase-config';
 
 function Navbar() {
   return (
@@ -27,6 +28,9 @@ function Navbar() {
             </li>
             <li className="nav-item">
               <Link to="login" className="nav-link">Connexion</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/" className="nav-link">{auth.currentUser.email}</Link>
             </li>
           </ul>
         </div>
