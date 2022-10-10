@@ -1,10 +1,10 @@
-import React, {useState} from "react";
+import React from "react";
 import {useForm} from "react-hook-form";
 import {createUserWithEmailAndPassword} from "firebase/auth";
 import {auth} from '../../firebase-config'
 
 function SignUp() {
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   // const [errorLogin, setErrorLogin] = useState(false);
 
   async function signUp(data) {
