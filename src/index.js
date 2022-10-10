@@ -11,12 +11,14 @@ import ErrorPage from './components/ErrorPage';
 import LogIn from './components/auth/LogIn';
 import Register from './components/auth/Register';
 
+import {UserContextProvider} from "./context/userContext"
+
 import reportWebVitals from './reportWebVitals';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App />,
+    element: <UserContextProvider><App /></UserContextProvider>,
     errorElement: <ErrorPage />,
     children: [
       {
