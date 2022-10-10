@@ -1,3 +1,5 @@
+import {Outlet} from "react-router-dom";
+
 import './App.css';
 
 import Navbar from "./components/Navbar";
@@ -10,10 +12,10 @@ function App() {
         <div class="row justify-content-center">
           <div class="col-lg-8">
             <Navbar />
-            <h1>Hello world</h1>
+            <Outlet />
           </div>
         </div>
-        
+
       </div>
     </div>
   );

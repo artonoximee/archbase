@@ -8,6 +8,8 @@ import './index.css';
 
 import App from './App';
 import ErrorPage from './components/ErrorPage';
+import SignIn from './components/auth/SignIn';
+import SignUp from './components/auth/SignUp';
 
 import reportWebVitals from './reportWebVitals';
 
@@ -16,6 +18,16 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
     errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "signin",
+        element: <SignIn />
+      },
+      {
+        path: "signup",
+        element: <SignUp />
+      },
+    ]
   }
 ]);
 
