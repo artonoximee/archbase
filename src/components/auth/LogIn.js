@@ -2,19 +2,22 @@ import React, {useState} from "react";
 import {useForm} from "react-hook-form";
 import {signInWithEmailAndPassword} from "firebase/auth";
 import {auth} from '../../firebase-config'
+import {useNavigate} from 'react-router-dom';
 
 function SignIn() {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const [errorLogin, setErrorLogin] = useState(false);
+  const navigate = useNavigate();
 
   async function login(data) {
     try {
       await signInWithEmailAndPassword(auth, data.email, data.password);
-      setErrorLogin(false)
+      setErrorLogin(false);
       reset({
         email: '',
         password: ''
-      })
+      });
+      navigate('/')
     } catch(err) {
       setErrorLogin(true)
     }
