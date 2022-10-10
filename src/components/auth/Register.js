@@ -7,7 +7,7 @@ function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(null);
 
   onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);

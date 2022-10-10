@@ -9,8 +9,8 @@ function App() {
     <div id="page" className="container-fluid bg-dark text-light">
       <div className="container">
         
-        <div class="row justify-content-center">
-          <div class="col-lg-8">
+        <div className="row justify-content-center">
+          <div className="col-lg-8">
             <Navbar />
             <Outlet />
           </div>
