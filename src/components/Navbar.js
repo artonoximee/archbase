@@ -48,9 +48,9 @@ function Navbar() {
             { 
               user && 
               <>
-                <li className="nav-item">
-                  <p className="nav-link">{user.email}</p>
-                </li>
+                
+                <span className="navbar-text">{user.email}</span>
+                
                 <li className="nav-item">
                   <Link onClick={logOut} className="nav-link">Déconnexion</Link>
                 </li>
