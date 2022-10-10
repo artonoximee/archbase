@@ -52,7 +52,7 @@ function Navbar() {
                 <span className="navbar-text">{user.email}</span>
                 
                 <li className="nav-item">
-                  <Link onClick={logOut} className="nav-link">Déconnexion</Link>
+                  <Link onClick={logOut} className="nav-link"><i className="fa-solid fa-right-from-bracket"></i></Link>
                 </li>
               </>
             }
