@@ -1,3 +1,4 @@
+import React, {useState} from "react";
 import {Outlet} from "react-router-dom";
 
 import './App.css';
@@ -5,6 +6,7 @@ import './App.css';
 import Navbar from "./components/Navbar";
 
 function App() {
+  const [user, setUser] = useState()
   return (
     <div id="page" className="container-fluid bg-dark text-light">
       <div className="container">

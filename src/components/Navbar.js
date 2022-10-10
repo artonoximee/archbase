@@ -1,12 +1,9 @@
-import React, {useContext} from "react";
+import React from "react";
 import {signOut} from "firebase/auth";
 import {auth} from '../firebase-config'
 import {Link} from "react-router-dom";
-import {UserContext} from "../context/userContext"
 
 function Navbar() {
-  const {user} = useContext(UserContext)
-
   async function logOut() {
     await signOut(auth);
   }
@@ -37,11 +34,6 @@ function Navbar() {
             <li className="nav-item">
               <Link to="login" className="nav-link">Connexion</Link>
             </li>
-            {user &&
-              <li className="nav-item">
-                <Link to="/" className="nav-link">{user.email}</Link>
-              </li>
-            }
             <li className="nav-item">
               <Link onClick={logOut} className="nav-link">Déconnexion</Link>
             </li>
