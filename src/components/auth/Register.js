@@ -5,11 +5,14 @@ import {auth} from '../../firebase-config'
 
 function SignUp() {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  // const [errorLogin, setErrorLogin] = useState(false);
 
   async function signUp(data) {
     try {
-      await createUserWithEmailAndPassword(auth, data.email, data.password);
+      await createUserWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      )
       window.location.reload();
     } catch(err) {
       console.log(err.message)
@@ -20,13 +23,7 @@ function SignUp() {
     <div className="row justify-content-center top-margin">
         <div className="col-lg-6 col-md-12">
 
-          <input 
-            type="text"
-            className={`form-control form-control-lg mt-3 bg-dark border-secondary text-light ${errors.name && "is-invalid border-danger"}`}
-            placeholder="Nom et prénom"
-            {...register("name", { required: true })}
-          />
-          {errors.email && <p className="text-danger mt-2">Merci de renseigner votre nom pour vous inscrire</p>}
+          <h3>Inscription</h3>
 
           <input 
             type="email"
