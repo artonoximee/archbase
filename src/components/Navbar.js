@@ -47,9 +47,14 @@ function Navbar() {
             }
             { 
               user && 
-              <li className="nav-item">
-                <Link onClick={logOut} className="nav-link">Déconnexion</Link>
-              </li>
+              <>
+                <li className="nav-item">
+                  <p className="nav-link">{user.email}</p>
+                </li>
+                <li className="nav-item">
+                  <Link onClick={logOut} className="nav-link">Déconnexion</Link>
+                </li>
+              </>
             }
           </ul>
         </div>
