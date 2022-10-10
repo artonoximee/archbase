@@ -10,6 +10,7 @@ function SignUp() {
   async function register() {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
+      window.location.reload();
     } catch(err) {
       console.log(err.message)
     }
