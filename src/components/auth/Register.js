@@ -1,9 +1,21 @@
 import React, {useState} from "react";
+import {createUserWithEmailAndPassword} from "firebase/auth";
+import {auth} from '../../firebase-config'
 
 function SignUp() {
   const [name, setName] = useState("")
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+
+  async function register() {
+    try {
+      const user = await createUserWithEmailAndPassword(auth, email, password);
+      console.log(user);
+    } catch(err) {
+      console.log(err.message);
+    }
+    
+  }
 
   return (
     <div className="row justify-content-center top-margin">
@@ -31,7 +43,7 @@ function SignUp() {
           />
 
           <div className="d-grid gap-2">
-            <button className={`btn btn-lg mt-5 btn-outline-primary`} onClick={null} type="submit">Inscription</button>
+            <button className={`btn btn-lg mt-5 btn-outline-primary`} onClick={register} type="submit">Inscription</button>
           </div>
 
           <div className=" bottom-margin"></div>
