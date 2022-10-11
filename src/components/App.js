@@ -8,6 +8,7 @@ import Dashboard from "./Dashboard";
 import SignUp from "./auth/SignUp";
 import LogIn from "./auth/LogIn";
 import ForgotPassword from "./auth/ForgotPassword";
+import UpdateProfile from "./auth/UpdateProfile";
 import PrivateRoute from "./PrivateRoute";
 
 import { AuthProvider } from "../contexts/AuthContext";
@@ -26,6 +27,7 @@ function App() {
                 <Routes>
                   <Route exact path="/" element={ <h1>Welcome</h1> } />
                   <Route path="/dashboard" element={ <PrivateRoute><Dashboard /></PrivateRoute> } />
+                  <Route path="/update-profile" element={ <PrivateRoute><UpdateProfile /></PrivateRoute> } />
                   <Route path="/signup" element={ <SignUp /> } />
                   <Route path="/login" element={ <LogIn /> } />
                   <Route path="/forgot-password" element={ <ForgotPassword /> } />
