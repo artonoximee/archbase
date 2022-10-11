@@ -7,7 +7,9 @@ import Navbar from "./Navbar";
 import Dashboard from "./Dashboard";
 import SignUp from "./auth/SignUp";
 import LogIn from "./auth/LogIn";
+import ForgotPassword from "./auth/ForgotPassword";
 import PrivateRoute from "./PrivateRoute";
+
 import { AuthProvider } from "../contexts/AuthContext";
 
 function App() {
@@ -26,6 +28,7 @@ function App() {
                   <Route path="/dashboard" element={ <PrivateRoute><Dashboard /></PrivateRoute> } />
                   <Route path="/signup" element={ <SignUp /> } />
                   <Route path="/login" element={ <LogIn /> } />
+                  <Route path="/forgot-password" element={ <ForgotPassword /> } />
                 </Routes>
               
             </div>
