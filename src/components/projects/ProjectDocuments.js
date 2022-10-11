@@ -3,7 +3,7 @@ import React from "react";
 function ProjectDocuments() {
   return (
     <>
-    <h4>Documents</h4>
+    <h4>Ajouter un document</h4>
     <hr />
     </>
   )

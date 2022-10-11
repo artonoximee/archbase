@@ -3,8 +3,9 @@ import React from "react";
 function ProjectDocuments() {
   return (
     <>
-    <h4>Clients</h4>
+    <h4>Ajouter un client</h4>
     <hr />
+    
     </>
   )
 };
