@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../contexts/AuthContext";
 
@@ -63,7 +64,7 @@ function SignUp() {
           </div>
 
           <div className="d-grid gap-2">
-            <a href="#" className="text-center text-secondary mt-3">Déjà inscrit ? Connectez-vous ici</a>
+            <Link to="/login" className="text-center text-secondary mt-3">Déjà inscrit ? Connectez-vous ici</Link>
           </div>
 
           { error && <div className="alert alert-danger mt-3">{ error }</div> }

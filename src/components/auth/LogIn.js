@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 function SignIn() {
@@ -35,6 +36,11 @@ function SignIn() {
           <div className="d-grid gap-2">
             <button className={ `btn btn-lg mt-5 btn-outline-primary` } onClick={ handleSubmit() } type="submit">Connexion</button>
           </div>
+
+          <div className="d-grid gap-2">
+            <Link to="/signup" className="text-center text-secondary mt-3">Pas encore de compte ? Créez-en un ici</Link>
+          </div>
+
           {/* {errorLogin && <p className="text-danger text-center mt-2">Adresse email ou mot de passe invalide</p>} */}
 
           <div className=" bottom-margin"></div>
