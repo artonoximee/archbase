@@ -1,23 +1,24 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../contexts/AuthContext";
 
 function ForgotPassword() {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
-  const { logIn } = useAuth();
+  const { resetPassword } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const navigate = useNavigate();
+  const [message, setMessage] = useState("");
 
   async function submitLogIn(data) {
     try {
+      setMessage("");
       setError("");
       setLoading(true);
-      await logIn(data.email, data.password);
-      navigate("/");
+      await resetPassword(data.email);
+      setMessage("Veuillez consulter vos emails pour réinitialiser votre mot de passe");
     } catch (err) {
-      setError("Échec de la connexion");
+      setError("Échec de la réinitialisation du mot de passe");
     }
     setLoading(false);
   }
