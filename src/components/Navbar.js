@@ -26,7 +26,7 @@ function Navbar() {
         </button>
         <div className="collapse navbar-collapse" id="navbarText">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link to="/" className="nav-link">Accueil</Link>
             </li>
             <li className="nav-item">
@@ -34,7 +34,7 @@ function Navbar() {
             </li>
             <li className="nav-item">
               <Link to="/" className="nav-link">À Propos</Link>
-            </li>
+            </li> */}
           </ul>
           <ul className="navbar-nav mb-2 mb-lg-0">
             <li className="nav-item dropdown">
