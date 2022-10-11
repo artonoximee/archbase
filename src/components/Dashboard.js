@@ -10,7 +10,7 @@ function Dashboard() {
   const projectsRef = collection(db, "projects")
   const q = query(projectsRef, where("userId", "==", currentUser.uid), orderBy("projectName"));
   const [projects, setProjects] = useState([]);
-  const [reload, setReload] = useState(false)
+  const [reload, setReload] = useState(false);
 
   const handleReload = () => {    
     setReload(!reload);      
@@ -53,7 +53,7 @@ function Dashboard() {
                 <strong>{project.projectName}</strong>
               </div>
               <div className="col-lg-4 text-end">
-                <Link to={`/project/${project.id}/documents`} className="btn btn-outline-primary"><i className="fa-solid fa-gear"></i></Link>
+                <Link to={`/project/${project.id}/settings`} className="btn btn-outline-primary"><i className="fa-solid fa-gear"></i></Link>
               </div>
             </div>
           </div>
