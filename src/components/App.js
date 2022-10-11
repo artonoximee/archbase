@@ -1,9 +1,8 @@
 import React from "react";
-import {Outlet} from "react-router-dom";
 
 import './App.css';
 
-import Navbar from "./components/Navbar";
+import Navbar from "./Navbar";
 
 function App() {
   return (
@@ -13,7 +12,7 @@ function App() {
         <div className="row justify-content-center">
           <div className="col-lg-8">
             <Navbar />
-            <Outlet />
+            
           </div>
         </div>
 
