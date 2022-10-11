@@ -11,7 +11,7 @@ function SideBarProject() {
         className={`list-group-item list-group-item-action list-group-item-dark ${location.pathname.includes("documents") ? "active" : ""}`}
       >
         <div className="row">
-          <div class="col-2">
+          <div className="col-2">
             <i className="fa-solid fa-file"></i>
           </div>
           <div className="col-10">
@@ -25,7 +25,7 @@ function SideBarProject() {
         className={`list-group-item list-group-item-action list-group-item-dark ${location.pathname.includes("clients") ? "active" : ""}`}
       >
         <div className="row">
-          <div class="col-2">
+          <div className="col-2">
           <i className="fa-solid fa-users"></i>
           </div>
           <div className="col-10">
@@ -39,7 +39,7 @@ function SideBarProject() {
         className={`list-group-item list-group-item-action list-group-item-dark ${location.pathname.includes("settings") ? "active" : ""}`}
       >
         <div className="row">
-          <div class="col-2">
+          <div className="col-2">
             <i className="fa-solid fa-gear"></i>
           </div>
           <div className="col-10">

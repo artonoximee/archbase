@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { db } from "../../firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, deleteDoc } from "firebase/firestore";
 
 function ProjectDocuments() {
   const { projectId } = useParams();
   const [project, setProject] = useState();
+  const navigate = useNavigate();
   
   useEffect(() => {
     async function getProject() {
@@ -18,6 +19,12 @@ function ProjectDocuments() {
     getProject()
   }, [])
 
+  async function deleteProject(id) {
+    const userDoc = doc(db, "projects", id);
+    await deleteDoc(userDoc);
+    navigate("/dashboard");
+  };
+
   return (
     <>
     {
@@ -29,7 +36,7 @@ function ProjectDocuments() {
       <h4 className="text-danger mt-5">Supprimer le projet</h4>
       <hr />
       <p>Une fois que vous avez supprimé votre projet, il est impossible de revenir en arrière. Soyez-en sûr.</p>
-      <button className="btn btn-outline-danger">Supprimer le projet</button>
+      <button className="btn btn-outline-danger" onClick={() => deleteProject(projectId)}>Supprimer le projet</button>
       </>
     }
     
