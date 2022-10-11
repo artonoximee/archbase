@@ -5,6 +5,8 @@ import PrivateRoute from "./PrivateRoute";
 import './App.css';
 
 import Navbar from "./Navbar";
+import Home from "./Home";
+import ErrorPage from "./ErrorPage";
 import Dashboard from "./Dashboard";
 import SignUp from "./auth/SignUp";
 import LogIn from "./auth/LogIn";
@@ -29,7 +31,7 @@ function App() {
               <Navbar />
               
                 <Routes>
-                  <Route exact path="/" element={ <h1>Welcome</h1> } />
+                  <Route exact path="/" element={ <Home /> } />
                   <Route path="dashboard" element={ <PrivateRoute><Dashboard /></PrivateRoute> } />
                   <Route path="update-profile" element={ <PrivateRoute><UpdateProfile /></PrivateRoute> } />
                   <Route path="/signup" element={ <SignUp /> } />
@@ -41,6 +43,7 @@ function App() {
                     <Route path="clients" element={<ProjectClients />} />
                     <Route path="settings" element={<ProjectSettings />} />
                   </Route>
+                  <Route path="*" element={<ErrorPage />} />
                 </Routes>
               
             </div>
