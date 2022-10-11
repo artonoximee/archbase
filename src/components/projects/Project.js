@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 function Project() {
   const { projectId } = useParams();
   return (
-    <h1 className="top-margin">Project {projectId}</h1>
+    <h3 className="top-margin">Projet {projectId}</h3>
   )
 }
 

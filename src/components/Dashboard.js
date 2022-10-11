@@ -21,8 +21,7 @@ function Dashboard() {
 
   return(
     <>
-      <div className="top-margin"></div>
-      <h3>Projets</h3>
+      <h3 className="top-margin">Projets</h3>
 
       { projects.map(project => (
         <div className="card mt-3 text-bg-dark border-secondary" key={project.id}>
