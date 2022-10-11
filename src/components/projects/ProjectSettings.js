@@ -94,9 +94,9 @@ function ProjectDocuments(props) {
             id="projectNameDelete"
             className={ `form-control bg-dark border-secondary text-light ${ (error || errors.projectNameDelete) && "is-invalid border-danger" }` }
             placeholder={`Veuillez taper le nom du projet pour confirmer sa suppression`}
-            { ...register("projectNameDelete", { required: true }) }
+            { ...register("projectNameDelete") }
           />
-          { (errors.projectNameDelete || error) && <div className="form-text text-danger">Veuillez renseigner le nom du projet pour le supprimer</div> }
+          { (error) && <div className="form-text text-danger">Veuillez renseigner le nom du projet pour le supprimer</div> }
         </div>
         <div className="col-lg-4">
           <button className="btn btn-outline-danger w-100 mt-lg-0 mt-3" onClick={handleSubmit(deleteProject)}>Supprimer le projet</button>
