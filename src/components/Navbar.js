@@ -36,28 +36,33 @@ function Navbar() {
               <Link to="/" className="nav-link">À Propos</Link>
             </li>
           </ul>
-          { 
-            !currentUser && 
-            <ul className="navbar-nav mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link to="signup" className="nav-link">Inscription</Link>
-              </li>
-              <li className="nav-item">
-                <Link to="login" className="nav-link">Connexion</Link>
-              </li>
-            </ul>
-          }
-          { 
-            currentUser && 
-            <ul className="navbar-nav mb-2 mb-lg-0">
-              <li className="nav-item">
-                <Link to="/update-profile" className="nav-link">{ currentUser.email }</Link>
-              </li>
-              <li className="nav-item">
-                <Link onClick={handleLogOut} className="nav-link"><i className="fa-solid fa-right-from-bracket text-primary"></i></Link>
-              </li>
-            </ul>
-          }
+          <ul className="navbar-nav mb-2 mb-lg-0">
+            <li className="nav-item dropdown">
+              <Link className="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                {
+                  currentUser ? <i className="fa-solid fa-user"></i> : <i className="fa-regular fa-user"></i>
+                }
+              </Link>
+              <ul className="dropdown-menu dropdown-menu-dark">
+                {
+                  !currentUser &&
+                  <>
+                  <li><Link to="/signup" className="dropdown-item" href="#"><i className="fa-solid fa-user-plus"></i> Inscription</Link></li>
+                  <li><Link to="/login" className="dropdown-item" href="#"><i className="fa-solid fa-right-to-bracket"></i> Connexion</Link></li>
+                  </>
+                }
+                {
+                  currentUser &&
+                  <>
+                  <li><Link to="/dashboard" className="dropdown-item">Dashboard</Link></li>
+                  <li><Link to="/update-profile" className="dropdown-item">Profil</Link></li>
+                  <li><hr className="dropdown-divider" /></li>
+                  <li><Link onClick={handleLogOut} className="dropdown-item">Déconnexion</Link></li>
+                  </>
+                }
+              </ul>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
