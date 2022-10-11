@@ -8,7 +8,7 @@ function SideBarProject() {
     <div className="list-group">
       <Link 
         to={`/project/${projectId}/documents`} 
-        className={`list-group-item list-group-item-action list-group-item-primary ${location.pathname.includes("documents") ? "active" : ""}`}
+        className={`list-group-item list-group-item-action list-group-item-dark ${location.pathname.includes("documents") ? "active" : ""}`}
       >
         <div className="row">
           <div class="col-2">
@@ -22,7 +22,7 @@ function SideBarProject() {
 
       <Link 
         to={`/project/${projectId}/clients`} 
-        className={`list-group-item list-group-item-action list-group-item-primary ${location.pathname.includes("clients") ? "active" : ""}`}
+        className={`list-group-item list-group-item-action list-group-item-dark ${location.pathname.includes("clients") ? "active" : ""}`}
       >
         <div className="row">
           <div class="col-2">
@@ -36,7 +36,7 @@ function SideBarProject() {
 
       <Link
         to={`/project/${projectId}/settings`} 
-        className={`list-group-item list-group-item-action list-group-item-primary ${location.pathname.includes("settings") ? "active" : ""}`}
+        className={`list-group-item list-group-item-action list-group-item-dark ${location.pathname.includes("settings") ? "active" : ""}`}
       >
         <div className="row">
           <div class="col-2">

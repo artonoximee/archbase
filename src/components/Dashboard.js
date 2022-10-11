@@ -54,7 +54,7 @@ function Dashboard() {
                 <strong>{project.projectName}</strong>
               </div>
               <div className="col-lg-4 text-end">
-                <Link to={`/project/${project.id}`} className="btn btn-outline-primary"><i className="fa-solid fa-gear"></i></Link>
+                <Link to={`/project/${project.id}/documents`} className="btn btn-outline-primary"><i className="fa-solid fa-gear"></i></Link>
               </div>
             </div>
           </div>
