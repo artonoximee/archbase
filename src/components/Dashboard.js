@@ -1,11 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 import { db } from "../firebase";
-import { collection, getDocs } from "firebase/firestore";
+import { collection, query, where, orderBy, getDocs } from "firebase/firestore";
 import AddProject from "./projects/AddProject"
 
 function Dashboard() {
-  const projectsCollectionRef = collection(db, "projects");
+  const { currentUser } = useAuth();
+  const projectsRef = collection(db, "projects")
+  const q = query(projectsRef, where("userId", "==", currentUser.uid));
+  // , orderBy("projectName")
   const [projects, setProjects] = useState([]);
   const [reload, setReload] = useState(false)
 
@@ -15,7 +19,7 @@ function Dashboard() {
 
   useEffect(() => {
     async function getProjects() {
-      const data = await getDocs(projectsCollectionRef);
+      const data = await getDocs(q);
       setProjects(data.docs.map(doc => ({ ...doc.data(), id: doc.id})))
     }
     getProjects()
@@ -28,6 +32,19 @@ function Dashboard() {
   return(
     <>
       <h3 className="top-margin"><i className="fa-solid fa-folder text-primary"></i> Projets</h3>
+
+      {
+        projects.length === 0 &&
+        <div className="card mt-3 text-bg-dark border-secondary">
+          <div className="card-body">
+            <div className="row align-items-center">
+              <div className="col">
+                Ajoutez un premier projet à l'aide du formulaire ci-dessous pour démarrer
+              </div>
+            </div>
+          </div>
+        </div>
+      }
 
       { projects && projects.map(project => (
         <div className="card mt-3 text-bg-dark border-secondary" key={project.id}>
