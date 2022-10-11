@@ -32,18 +32,16 @@ function Dashboard() {
     <>
       <h3 className="top-margin"><i className="fa-solid fa-folder text-primary"></i> Projets</h3>
 
+      <hr className="border border-2" />
+
       {
         projects.length === 0 &&
-        <div className="card mt-3 text-bg-dark border-secondary">
-          <div className="card-body">
-            <div className="row align-items-center">
-              <div className="col">
-                Ajoutez un premier projet à l'aide du formulaire ci-dessous pour démarrer
-              </div>
-            </div>
-          </div>
+        <div className="alert alert-primary">
+          Ajoutez un premier projet à l'aide du formulaire ci-dessous pour démarrer
         </div>
       }
+
+      <AddProject onReload={handleReload} />
 
       { projects && projects.map(project => (
         <div className="card mt-3 text-bg-dark border-secondary" key={project.id}>
@@ -60,7 +58,7 @@ function Dashboard() {
         </div>
       )) }
       
-      <AddProject onReload={handleReload} />
+      
 
     </>
   )

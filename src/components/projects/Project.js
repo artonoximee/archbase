@@ -26,8 +26,9 @@ function Project() {
         <>
           <div className="row top-margin">
             <div className="col">
-              <Link to="/dashboard" className="btn btn-sm btn-outline-primary"><i className="fa-solid fa-left-long"></i> Retour</Link>
-              <h3 className="mt-5">{project.projectName}</h3>
+              <Link to="/dashboard" className="btn btn-sm btn-primary"><i className="fa-solid fa-left-long"></i> Retour</Link>
+              <h3 className="mt-5"><i className="fa-solid fa-folder-open text-primary"></i> {project.projectName}</h3>
+              <hr className="border border-2" />
             </div>
           </div>
           <div className="row mt-4">

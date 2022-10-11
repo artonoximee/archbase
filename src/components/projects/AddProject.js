@@ -18,19 +18,19 @@ function ProjectForm(props) {
 
   return (
     <>
-      <div className="row justify-content-center align-items-start mt-5">
-        <div className="col-lg-7">
+      <div className="row justify-content-center align-items-start mt-5 mb-5">
+        <div className="col-10">
           <input 
             type="text"
             id="projectName"
-            className={ `form-control bg-dark border-secondary text-light ${ errors.projectName && "is-invalid border-danger" }` }
+            className={ `form-control form-control-lg bg-dark border-secondary text-light ${ errors.projectName && "is-invalid border-danger" }` }
             placeholder="Ajouter un projet"
             { ...register("projectName", { required: true }) }
           />
           { errors.projectName && <div className="form-text text-danger">Merci de renseigner un nom pour créer un nouveau projet</div> }
         </div>
-        <div className="col-lg-1">
-          <button className="btn btn-outline-primary" onClick={ handleSubmit(createProject) } type="submit"><i className="fa-solid fa-plus"></i></button>
+        <div className="col-2 text-end">
+          <button className="btn btn-lg btn-primary w-100" onClick={ handleSubmit(createProject) } type="submit"><i className="fa-solid fa-plus"></i></button>
         </div>
       </div>
     </>
