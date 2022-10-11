@@ -1,9 +1,24 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useAuth } from "../../contexts/AuthContext";
 
 function SignIn() {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const { logIn } = useAuth();
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
+
+  async function submitLogIn(data) {
+    try {
+      setError("");
+      setLoading(true);
+      await logIn(data.email, data.password);
+    } catch (err) {
+      setError("Échec de la connexion");
+    }
+    setLoading(false);
+  }
 
   return (
     <div className="row justify-content-center top-margin">
@@ -34,14 +49,14 @@ function SignIn() {
           </div>
         
           <div className="d-grid gap-2">
-            <button className={ `btn btn-lg mt-5 btn-outline-primary` } onClick={ handleSubmit() } type="submit">Connexion</button>
+            <button className={ `btn btn-lg mt-5 btn-outline-primary` } onClick={ handleSubmit(submitLogIn) } disabled={ loading } type="submit">Connexion</button>
           </div>
 
           <div className="d-grid gap-2">
             <Link to="/signup" className="text-center text-secondary mt-3">Pas encore de compte ? Créez-en un ici</Link>
           </div>
 
-          {/* {errorLogin && <p className="text-danger text-center mt-2">Adresse email ou mot de passe invalide</p>} */}
+          { error && <div className="alert alert-danger mt-3">{ error }</div> }
 
           <div className=" bottom-margin"></div>
         </div>
