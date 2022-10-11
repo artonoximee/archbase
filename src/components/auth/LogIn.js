@@ -29,7 +29,7 @@ function SignIn() {
             placeholder="Mot de passe"
             { ...register("password", { required: true, minLength: 6 }) }
           />
-          <div class={ `form-text ${ errors.password && "text-danger" }` }>
+          <div className={ `form-text ${ errors.password && "text-danger" }` }>
             Votre mot de passe doit au minimum contenir 6 caractères.
           </div>
         
