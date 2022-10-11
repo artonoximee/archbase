@@ -4,7 +4,7 @@ import { useAuth } from "../../contexts/AuthContext";
 
 function SignUp() {
   const { register, handleSubmit, formState: { errors } } = useForm();
-  const { signUp } = useAuth();
+  const { signUp, currentUser } = useAuth();
   const [error, setError] = useState("")
   const [loading, setLoading] = useState(false)
 
@@ -27,6 +27,8 @@ function SignUp() {
         <div className="col-lg-6 col-md-12">
 
           <h3>Inscription</h3>
+
+          { currentUser && currentUser.email }
           
           <label htmlFor="email" className="form-label mt-5"><i className="fa-solid fa-envelope text-primary"></i> Email</label>
           <input 
