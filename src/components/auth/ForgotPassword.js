@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../../contexts/AuthContext";
 
 function ForgotPassword() {
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const { register, handleSubmit, formState: { errors } } = useForm();
   const { resetPassword } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
