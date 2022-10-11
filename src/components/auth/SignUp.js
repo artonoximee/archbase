@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../contexts/AuthContext";
 
 function SignUp() {
   const { register, handleSubmit, formState: { errors } } = useForm();
   const { signUp } = useAuth();
-  const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   async function submitSignUp(data) {
     if (data.password !== data.passwordConfirm) {
@@ -17,6 +18,7 @@ function SignUp() {
       setError("");
       setLoading(true);
       await signUp(data.email, data.password);
+      navigate("/");
     } catch (err) {
       setError("Échec de la création du compte");
     }

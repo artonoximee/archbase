@@ -1,19 +1,21 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../contexts/AuthContext";
 
 function SignIn() {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const { logIn } = useAuth();
-  const [error, setError] = useState("")
-  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   async function submitLogIn(data) {
     try {
       setError("");
       setLoading(true);
       await logIn(data.email, data.password);
+      navigate("/");
     } catch (err) {
       setError("Échec de la connexion");
     }
