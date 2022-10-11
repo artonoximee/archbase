@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
 import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
+import AddProject from "./projects/AddProject"
 
 function Dashboard() {
-  const { currentUser } = useAuth();
-
   const projectsCollectionRef = collection(db, "projects");
   const [projects, setProjects] = useState([]);
   
@@ -21,9 +19,9 @@ function Dashboard() {
 
   return(
     <>
-      <h3 className="top-margin">Projets</h3>
+      <h3 className="top-margin"><i className="fa-solid fa-folder text-primary"></i> Projets</h3>
 
-      { projects.map(project => (
+      { projects && projects.map(project => (
         <div className="card mt-3 text-bg-dark border-secondary" key={project.id}>
           <div className="card-body">
             <div className="row align-items-center">
@@ -31,12 +29,14 @@ function Dashboard() {
                 <strong>{project.projectName}</strong>
               </div>
               <div className="col-lg-4 text-end">
-                <Link to={`/project/${project.id}`} className="btn btn-sm btn-outline-primary">Accéder aux détails du projet</Link>
+                <Link to={`/project/${project.id}`} className="btn btn-outline-primary"><i className="fa-solid fa-gear"></i></Link>
               </div>
             </div>
           </div>
         </div>
       )) }
+      
+      <AddProject />
 
     </>
   )
