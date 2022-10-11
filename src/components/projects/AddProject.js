@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import { useAuth } from "../../contexts/AuthContext";
 import { db } from "../../firebase";
 import { collection, addDoc } from "firebase/firestore";
-import { useNavigate } from "react-router-dom";
 
 function ProjectForm(props) {
   const { currentUser } = useAuth();

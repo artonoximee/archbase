@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import { db } from "../../firebase";
 import { doc, getDoc } from "firebase/firestore";
+import SidebarProject from "./SidebarProject"
 
 function Project() {
   const { projectId } = useParams();
@@ -22,13 +23,22 @@ function Project() {
     <>
       {
         project &&
-        <div className="row top-margin">
-          <div className="col">
-            <Link to="/dashboard" className="btn btn-sm btn-outline-primary"><i className="fa-solid fa-left-long"></i> Retour</Link>
-            <h3 className="mt-4">{project.projectName}</h3>
+        <>
+          <div className="row top-margin">
+            <div className="col">
+              <Link to="/dashboard" className="btn btn-sm btn-outline-primary"><i className="fa-solid fa-left-long"></i> Retour</Link>
+              <h3 className="mt-4">{project.projectName}</h3>
+            </div>
           </div>
-        </div>
-        
+          <div className="row mt-4">
+            <div className="col-3">
+              <SidebarProject projectId={project.id} />
+            </div>
+            <div className="col-9">
+              
+            </div>
+          </div>
+        </>
       }
     </>
     
