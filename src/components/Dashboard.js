@@ -8,7 +8,10 @@ function Dashboard() {
   const projectsCollectionRef = collection(db, "projects");
   const [projects, setProjects] = useState([]);
   const [reload, setReload] = useState(false)
-  
+
+  const handleReload = () => {    
+    setReload(!reload);      
+  };
 
   useEffect(() => {
     async function getProjects() {
@@ -16,7 +19,7 @@ function Dashboard() {
       setProjects(data.docs.map(doc => ({ ...doc.data(), id: doc.id})))
     }
     getProjects()
-  }, [])
+  }, [reload])
 
   useEffect(() => {
 
@@ -41,7 +44,7 @@ function Dashboard() {
         </div>
       )) }
       
-      <AddProject handleClick={setReload} />
+      <AddProject onReload={handleReload} />
 
     </>
   )

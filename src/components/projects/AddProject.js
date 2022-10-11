@@ -5,15 +5,16 @@ import { db } from "../../firebase";
 import { collection, addDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 
-function ProjectForm() {
+function ProjectForm(props) {
   const { currentUser } = useAuth();
   const projectsCollectionRef = collection(db, "projects");
-  const { register, handleSubmit, formState: { errors } } = useForm();
-  const navigate = useNavigate();
+  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const { onReload } = props;
 
   async function createProject(data) {
     await addDoc(projectsCollectionRef, {projectName: data.projectName, userId: currentUser.uid});
-    navigate("/dashboard");
+    reset({projectName: ""})
+    onReload();
   }
 
   return (
