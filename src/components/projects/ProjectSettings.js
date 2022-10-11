@@ -9,6 +9,7 @@ function ProjectDocuments(props) {
   const [project, setProject] = useState();
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("")
   const navigate = useNavigate();
   
   useEffect(() => {
@@ -32,10 +33,14 @@ function ProjectDocuments(props) {
     //navigate("/dashboard")
   };
 
-  async function deleteProject(id) {
-    const userDoc = doc(db, "projects", id);
-    await deleteDoc(userDoc);
-    navigate("/dashboard");
+  async function deleteProject(data) {
+    setError("");
+    if (data.projectNameDelete === data.projectNameConfirm) {
+      const userDoc = doc(db, "projects", data.projectId);
+      await deleteDoc(userDoc);
+      navigate("/dashboard");
+    }
+    setError("Le nom entré ne correspond pas au nom du projet")
   };
 
   return (
@@ -61,17 +66,42 @@ function ProjectDocuments(props) {
             defaultValue={ project.projectName }
             { ...register("projectName", { required: true }) }
           />
-          { errors.projectName && <div className="form-text text-danger">Merci de renseigner un nom pour créer un nouveau projet</div> }
+          { errors.projectName && <div className="form-text text-danger">Veuillez renseigner un nom pour modifier le projet</div> }
         </div>
         <div className="col-lg-4">
-          <button className="btn btn-outline-primary w-100" onClick={handleSubmit(updateProject)} disabled={loading}>Modifier le nom du projet</button>
+          <button className="btn btn-outline-primary w-100 mt-lg-0 mt-3" onClick={handleSubmit(updateProject)} disabled={loading}>Modifier le nom du projet</button>
         </div>
       </div>
       
       <h4 className="text-danger mt-5">Supprimer le projet</h4>
       <hr />
       <p>Une fois que vous avez supprimé votre projet, il est impossible de revenir en arrière. Soyez-en sûr.</p>
-      <button className="btn btn-outline-danger" onClick={() => deleteProject(projectId)}>Supprimer le projet</button>
+      <p>Veuillez taper <span className="font-monospace text-danger">{project.projectName}</span> pour confirmer l'action.</p>
+      <div className="row">
+        <div className="col-lg-8">
+          <input 
+            type="hidden" 
+            value={ projectId }
+            { ...register("projectIdDelete", { required: true }) }
+          />
+          <input 
+            type="hidden" 
+            value={ project.projectName }
+            { ...register("projectNameConfirm", { required: true }) }
+          />
+          <input 
+            type="text"
+            id="projectNameDelete"
+            className={ `form-control bg-dark border-secondary text-light ${ (error || errors.projectNameDelete) && "is-invalid border-danger" }` }
+            placeholder={`Veuillez taper le nom du projet pour confirmer sa suppression`}
+            { ...register("projectNameDelete", { required: true }) }
+          />
+          { (errors.projectNameDelete || error) && <div className="form-text text-danger">Veuillez renseigner le nom du projet pour le supprimer</div> }
+        </div>
+        <div className="col-lg-4">
+          <button className="btn btn-outline-danger w-100 mt-lg-0 mt-3" onClick={handleSubmit(deleteProject)}>Supprimer le projet</button>
+        </div>
+      </div>
       </>
     }
     
