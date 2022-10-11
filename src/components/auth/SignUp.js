@@ -18,7 +18,7 @@ function SignUp() {
       setError("");
       setLoading(true);
       await signUp(data.email, data.password);
-      navigate("/");
+      navigate("/dashboard");
     } catch (err) {
       setError("Échec de la création du compte");
     }

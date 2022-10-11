@@ -15,7 +15,7 @@ function SignIn() {
       setError("");
       setLoading(true);
       await logIn(data.email, data.password);
-      navigate("/");
+      navigate("/dashboard");
     } catch (err) {
       setError("Échec de la connexion");
     }
