@@ -50,10 +50,12 @@ function Navbar() {
           { 
             currentUser && 
             <ul className="navbar-nav mb-2 mb-lg-0">
-              <span className="navbar-text">{currentUser.email}</span>
               <li className="nav-item">
-                  <Link onClick={handleLogOut} className="nav-link"><i className="fa-solid fa-right-from-bracket text-primary"></i></Link>
-                </li>
+                <Link to="/update-profile" className="nav-link">{ currentUser.email }</Link>
+              </li>
+              <li className="nav-item">
+                <Link onClick={handleLogOut} className="nav-link"><i className="fa-solid fa-right-from-bracket text-primary"></i></Link>
+              </li>
             </ul>
           }
         </div>
