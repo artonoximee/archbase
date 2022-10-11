@@ -1,23 +1,8 @@
 import React from "react";
 import {useForm} from "react-hook-form";
-import {createUserWithEmailAndPassword} from "firebase/auth";
-import {auth} from '../../firebase-config'
 
 function SignUp() {
   const { register, handleSubmit, formState: { errors } } = useForm();
-
-  async function signUp(data) {
-    try {
-      await createUserWithEmailAndPassword(
-        auth,
-        data.email,
-        data.password
-      )
-      window.location.reload();
-    } catch(err) {
-      console.log(err.message)
-    }
-  }
 
   return (
     <div className="row justify-content-center top-margin">
@@ -48,7 +33,11 @@ function SignUp() {
           </div>
 
           <div className="d-grid gap-2">
-            <button className={`btn btn-lg mt-5 btn-outline-primary`} onClick={handleSubmit(signUp)} type="submit">Inscription</button>
+            <button className={`btn btn-lg mt-5 btn-outline-primary`} onClick={handleSubmit()} type="submit">Inscription</button>
+          </div>
+
+          <div className="d-grid gap-2">
+            <a href="#" className="text-center text-secondary mt-3">Déjà inscrit ? Connectez-vous ici</a>
           </div>
 
           <div className=" bottom-margin"></div>

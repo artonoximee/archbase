@@ -3,6 +3,7 @@ import React from "react";
 import './App.css';
 
 import Navbar from "./Navbar";
+import Register from "./auth/Register";
 
 function App() {
   return (
@@ -12,7 +13,7 @@ function App() {
         <div className="row justify-content-center">
           <div className="col-lg-8">
             <Navbar />
-            
+            <Register />
           </div>
         </div>
 
