@@ -2,7 +2,10 @@ import React from "react";
 
 function ProjectDocuments() {
   return (
-    <h6>Clients</h6>
+    <>
+    <h4>Clients</h4>
+    <hr />
+    </>
   )
 };
 
