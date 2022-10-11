@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useAuth } from "../../contexts/AuthContext";
 
 function SignUp() {
   const { register, handleSubmit, formState: { errors } } = useForm();
+  const { signUp } = useAuth();
+  const [error, setError] = useState("")
+  const [loading, setLoading] = useState(false)
+
+  async function submitSignUp(data) {
+    if (data.password !== data.passwordConfirm) {
+      return setError("Les mots de passes ne correspondent pas, veuillez réessayer.");
+    }
+    try {
+      setError("");
+      setLoading(true);
+      await signUp(data.email, data.password);
+    } catch (err) {
+      setError("Échec de la création du compte");
+    }
+    setLoading(false);
+  }
 
   return (
     <div className="row justify-content-center top-margin">
@@ -29,7 +46,7 @@ function SignUp() {
             placeholder="Mot de passe"
             { ...register("password", { required: true, minLength: 6 }) }
           />
-          <div class={ `form-text ${ errors.password && "text-danger" }` }>
+          <div className={ `form-text ${ errors.password && "text-danger" }` }>
             Votre mot de passe doit au minimum contenir 6 caractères.
           </div>
           <label htmlFor="passwordConfirm" className="form-label mt-3"><i className="fa-sharp fa-solid fa-key text-primary"></i> Confirmation du mot de passe</label>
@@ -38,16 +55,18 @@ function SignUp() {
             id="passwordConfirm"
             className={ `form-control form-control-lg bg-dark border-secondary text-light ${ errors.password && "is-invalid border-danger" }` }
             placeholder="Confirmation mot de passe"
-            {...register("password", { required: true, minLength: 6 })}
+            {...register("passwordConfirm", { required: true, minLength: 6 })}
           />
 
           <div className="d-grid gap-2">
-            <button className={ `btn btn-lg mt-5 btn-outline-primary` } onClick={ handleSubmit() } type="submit">Inscription</button>
+            <button className={ `btn btn-lg mt-5 btn-outline-primary` } onClick={ handleSubmit(submitSignUp) } disabled={ loading } type="submit">Inscription</button>
           </div>
 
           <div className="d-grid gap-2">
             <a href="#" className="text-center text-secondary mt-3">Déjà inscrit ? Connectez-vous ici</a>
           </div>
+
+          { error && <div className="alert alert-danger mt-3">{ error }</div> }
 
           <div className=" bottom-margin"></div>
         </div>
