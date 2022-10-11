@@ -31,6 +31,14 @@ function SignUp() {
           <div class={`form-text ${errors.password && "text-danger"}`}>
             Votre mot de passe doit au minimum contenir 6 caractères.
           </div>
+          <label htmlFor="passwordConfirm" className="form-label mt-3"><i className="fa-sharp fa-solid fa-key text-primary"></i> Confirmation du mot de passe</label>
+          <input 
+            type="password"
+            id="passwordConfirm"
+            className={`form-control form-control-lg bg-dark border-secondary text-light ${errors.password && "is-invalid border-danger"}`}
+            placeholder="Confirmation mot de passe"
+            {...register("password", { required: true, minLength: 6 })}
+          />
 
           <div className="d-grid gap-2">
             <button className={`btn btn-lg mt-5 btn-outline-primary`} onClick={handleSubmit()} type="submit">Inscription</button>
