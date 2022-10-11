@@ -47,6 +47,8 @@ function ForgotPassword() {
             <Link to="/login" className="text-center text-secondary mt-3">Connexion</Link>
           </div>
 
+          { message && <div className="alert alert-primary mt-3">{ message }</div> }
+
           { error && <div className="alert alert-danger mt-3">{ error }</div> }
 
           <div className=" bottom-margin"></div>
