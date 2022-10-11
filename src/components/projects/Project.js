@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, Outlet } from "react-router-dom";
 import { db } from "../../firebase";
 import { doc, getDoc } from "firebase/firestore";
 import SidebarProject from "./SidebarProject"
@@ -35,7 +35,7 @@ function Project() {
               <SidebarProject projectId={project.id} />
             </div>
             <div className="col-9">
-              
+              <Outlet />
             </div>
           </div>
         </>

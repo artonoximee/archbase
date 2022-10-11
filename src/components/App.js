@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import PrivateRoute from "./PrivateRoute";
 
 import './App.css';
 
@@ -9,8 +10,10 @@ import SignUp from "./auth/SignUp";
 import LogIn from "./auth/LogIn";
 import ForgotPassword from "./auth/ForgotPassword";
 import UpdateProfile from "./auth/UpdateProfile";
-import PrivateRoute from "./PrivateRoute";
 import Project from "./projects/Project";
+import ProjectDocuments from "./projects/ProjectDocuments";
+import ProjectClients from "./projects/ProjectClients";
+import ProjectSettings from "./projects/ProjectSettings";
 
 import { AuthProvider } from "../contexts/AuthContext";
 
@@ -27,13 +30,17 @@ function App() {
               
                 <Routes>
                   <Route exact path="/" element={ <h1>Welcome</h1> } />
-                  <Route path="/dashboard" element={ <PrivateRoute><Dashboard /></PrivateRoute> } />
-                  <Route path="/update-profile" element={ <PrivateRoute><UpdateProfile /></PrivateRoute> } />
+                  <Route path="dashboard" element={ <PrivateRoute><Dashboard /></PrivateRoute> } />
+                  <Route path="update-profile" element={ <PrivateRoute><UpdateProfile /></PrivateRoute> } />
                   <Route path="/signup" element={ <SignUp /> } />
                   <Route path="/login" element={ <LogIn /> } />
                   <Route path="/forgot-password" element={ <ForgotPassword /> } />
 
-                  <Route path="/project/:projectId" element={ <PrivateRoute><Project /></PrivateRoute> } />
+                  <Route path="/project/:projectId" element={ <PrivateRoute><Project /></PrivateRoute> }>
+                    <Route path="documents" element={<ProjectDocuments />} />
+                    <Route path="clients" element={<ProjectClients />} />
+                    <Route path="settings" element={<ProjectSettings />} />
+                  </Route>
                 </Routes>
               
             </div>
