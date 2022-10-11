@@ -31,10 +31,10 @@ function Project() {
             </div>
           </div>
           <div className="row mt-4">
-            <div className="col-3">
+            <div className="col-lg-3">
               <SidebarProject projectId={project.id} />
             </div>
-            <div className="col-9">
+            <div className="col-lg-9 mt-lg-0 mt-5">
               <Outlet />
             </div>
           </div>
