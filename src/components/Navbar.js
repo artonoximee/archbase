@@ -54,10 +54,10 @@ function Navbar() {
                 {
                   currentUser &&
                   <>
-                  <li><Link to="/dashboard" className="dropdown-item">Dashboard</Link></li>
-                  <li><Link to="/update-profile" className="dropdown-item">Profil</Link></li>
+                  <li><Link to="/dashboard" className="dropdown-item"><i className="fa-solid fa-table-columns"></i> Dashboard</Link></li>
+                  <li><Link to="/update-profile" className="dropdown-item"><i className="fa-solid fa-user-pen"></i> Profil</Link></li>
                   <li><hr className="dropdown-divider" /></li>
-                  <li><Link onClick={handleLogOut} className="dropdown-item">Déconnexion</Link></li>
+                  <li><Link onClick={handleLogOut} className="dropdown-item"><i className="fa-solid fa-right-from-bracket"></i> Déconnexion</Link></li>
                   </>
                 }
               </ul>
