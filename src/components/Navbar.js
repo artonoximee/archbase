@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 function Navbar() {
+  const { currentUser } = useAuth();
+
   return (
     <nav className="navbar navbar-dark navbar-expand-lg bg-dark">
       <div className="container-fluid">
@@ -21,31 +24,26 @@ function Navbar() {
               <Link to="/" className="nav-link">À Propos</Link>
             </li>
           </ul>
-          <ul className="navbar-nav mb-2 mb-lg-0">
+          { 
+            !currentUser && 
+            <ul className="navbar-nav mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link to="signup" className="nav-link">Inscription</Link>
               </li>
               <li className="nav-item">
                 <Link to="login" className="nav-link">Connexion</Link>
               </li>
-          </ul>
-          {/* 
-            {
-              !user &&
-              
-            }
-            { 
-              user && 
-              <>
-                
-                <span className="navbar-text">{user.email}</span>
-                
-                <li className="nav-item">
-                  <Link onClick={logOut} className="nav-link"><i className="fa-solid fa-right-from-bracket"></i></Link>
+            </ul>
+          }
+          { 
+            currentUser && 
+            <ul className="navbar-nav mb-2 mb-lg-0">
+              <span className="navbar-text">{currentUser.email}</span>
+              <li className="nav-item">
+                  <Link onClick={null} className="nav-link"><i className="fa-solid fa-right-from-bracket text-primary"></i></Link>
                 </li>
-              </>
-            }
-           */}
+            </ul>
+          }
         </div>
       </div>
     </nav>
