@@ -30,16 +30,18 @@ function ProjectDocuments(props) {
     await updateDoc(userDoc, newFields);
     setLoading(false);
     window.location.reload();
-    //navigate("/dashboard")
   };
 
   async function deleteProject(data) {
     setError("");
+    setLoading(true);
     if (data.projectNameDelete === data.projectNameConfirm) {
       const userDoc = doc(db, "projects", data.projectId);
       await deleteDoc(userDoc);
       navigate("/dashboard");
+      setLoading(false);
     }
+    setLoading(false);
     setError("Le nom entré ne correspond pas au nom du projet")
   };
 
@@ -99,7 +101,7 @@ function ProjectDocuments(props) {
           { (error) && <div className="form-text text-danger">Veuillez renseigner le nom du projet pour le supprimer</div> }
         </div>
         <div className="col-lg-4">
-          <button className="btn btn-outline-danger w-100 mt-lg-0 mt-3" onClick={handleSubmit(deleteProject)}>Supprimer le projet</button>
+          <button className="btn btn-outline-danger w-100 mt-lg-0 mt-3" onClick={handleSubmit(deleteProject)} disabled={loading}>Supprimer le projet</button>
         </div>
       </div>
       </>
