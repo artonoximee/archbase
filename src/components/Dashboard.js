@@ -8,8 +8,7 @@ import AddProject from "./projects/AddProject"
 function Dashboard() {
   const { currentUser } = useAuth();
   const projectsRef = collection(db, "projects")
-  const q = query(projectsRef, where("userId", "==", currentUser.uid));
-  // , orderBy("projectName")
+  const q = query(projectsRef, where("userId", "==", currentUser.uid), orderBy("projectName"));
   const [projects, setProjects] = useState([]);
   const [reload, setReload] = useState(false)
 
