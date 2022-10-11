@@ -10,6 +10,7 @@ import LogIn from "./auth/LogIn";
 import ForgotPassword from "./auth/ForgotPassword";
 import UpdateProfile from "./auth/UpdateProfile";
 import PrivateRoute from "./PrivateRoute";
+import Project from "./projects/Project";
 
 import { AuthProvider } from "../contexts/AuthContext";
 
@@ -31,6 +32,8 @@ function App() {
                   <Route path="/signup" element={ <SignUp /> } />
                   <Route path="/login" element={ <LogIn /> } />
                   <Route path="/forgot-password" element={ <ForgotPassword /> } />
+
+                  <Route path="/project/:projectId" element={ <PrivateRoute><Project /></PrivateRoute> } />
                 </Routes>
               
             </div>

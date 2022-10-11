@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
@@ -31,7 +32,7 @@ function Dashboard() {
                 <strong>{project.projectName}</strong>
               </div>
               <div className="col-lg-4 text-end">
-                <a href="" className="btn btn-sm btn-outline-primary">Accéder aux détails du projet</a>
+                <Link to={`/project/${project.id}`} className="btn btn-sm btn-outline-primary">Accéder aux détails du projet</Link>
               </div>
             </div>
           </div>
