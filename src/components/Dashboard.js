@@ -20,23 +20,24 @@ function Dashboard() {
 
   return(
     <>
-      <div className="card mt-5 text-bg-dark">
-        <div className="card-header text-bg-secondary">
-          <h3 className="mt-2">Dashboard</h3>
-        </div>
-        <div className="card-body">
-          <p className="card-text">Connecté en tant que <b>{ currentUser.email }</b></p>
-        </div>
-      </div>
+      <div className="top-margin"></div>
+      <h3>Projets</h3>
 
-      <div className="card mt-5 text-bg-dark">
-        <div className="card-header text-bg-secondary">
-        <h3 className="mt-2">Projets</h3>
+      { projects.map(project => (
+        <div className="card mt-3 text-bg-dark border-secondary" key={project.id}>
+          <div className="card-body">
+            <div className="row align-items-center">
+              <div className="col-lg-8">
+                <strong>{project.projectName}</strong>
+              </div>
+              <div className="col-lg-4 text-end">
+                <a href="" className="btn btn-sm btn-outline-primary">Accéder aux détails du projet</a>
+              </div>
+            </div>
+          </div>
         </div>
-        <ul className="list-group list-group-flush">
-          { projects.map(project => <li key={ project.id } className="list-group-item text-bg-dark">{ project.projectName }</li>) }
-        </ul>
-      </div>
+      )) }
+
     </>
   )
 }
