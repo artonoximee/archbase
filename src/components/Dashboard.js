@@ -7,6 +7,7 @@ import AddProject from "./projects/AddProject"
 function Dashboard() {
   const projectsCollectionRef = collection(db, "projects");
   const [projects, setProjects] = useState([]);
+  const [reload, setReload] = useState(false)
   
 
   useEffect(() => {
@@ -16,6 +17,10 @@ function Dashboard() {
     }
     getProjects()
   }, [])
+
+  useEffect(() => {
+
+  }, [reload])
 
   return(
     <>
@@ -36,7 +41,7 @@ function Dashboard() {
         </div>
       )) }
       
-      <AddProject />
+      <AddProject handleClick={setReload} />
 
     </>
   )
