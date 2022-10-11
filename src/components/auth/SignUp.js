@@ -28,7 +28,7 @@ function SignUp() {
 
           <h3>Inscription</h3>
 
-          { currentUser && currentUser.email }
+          { currentUser.email }
           
           <label htmlFor="email" className="form-label mt-5"><i className="fa-solid fa-envelope text-primary"></i> Email</label>
           <input 
