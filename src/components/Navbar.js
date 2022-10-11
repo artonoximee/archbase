@@ -1,9 +1,21 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 function Navbar() {
+  const [error, setError] = useState("");
   const { currentUser, logOut } = useAuth();
+  const navigate = useNavigate();
+
+  async function handleLogOut() {
+    setError("")
+    try {
+      await logOut();
+      navigate("/login");
+    } catch {
+      setError("Échec de la déconnexion");
+    }
+  }
 
   return (
     <nav className="navbar navbar-dark navbar-expand-lg bg-dark">
@@ -40,7 +52,7 @@ function Navbar() {
             <ul className="navbar-nav mb-2 mb-lg-0">
               <span className="navbar-text">{currentUser.email}</span>
               <li className="nav-item">
-                  <Link onClick={null} className="nav-link"><i className="fa-solid fa-right-from-bracket text-primary"></i></Link>
+                  <Link onClick={handleLogOut} className="nav-link"><i className="fa-solid fa-right-from-bracket text-primary"></i></Link>
                 </li>
             </ul>
           }
